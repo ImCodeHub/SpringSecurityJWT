@@ -28,8 +28,8 @@ public class UserController {
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate( @RequestBody AuthenticationRequest request) {
-        
-        return null;
+        AuthenticationResponse response = authService.authenticate(request);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
     
 }
