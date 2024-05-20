@@ -6,11 +6,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.Authentication.SpringSecurityJWT.Config.JwtService;
 import com.Authentication.SpringSecurityJWT.Entity.User;
 import com.Authentication.SpringSecurityJWT.Model.AuthenticationRequest;
 import com.Authentication.SpringSecurityJWT.Model.RegisterRequest;
 import com.Authentication.SpringSecurityJWT.Repository.UserRepository;
+import com.Authentication.SpringSecurityJWT.Service.JwtService;
 
 import lombok.*;
 
