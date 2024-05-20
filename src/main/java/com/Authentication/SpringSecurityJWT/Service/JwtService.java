@@ -1,4 +1,4 @@
-package com.Authentication.SpringSecurityJWT.Config;
+package com.Authentication.SpringSecurityJWT.Service;
 
 import java.security.Key;
 import java.util.*;
