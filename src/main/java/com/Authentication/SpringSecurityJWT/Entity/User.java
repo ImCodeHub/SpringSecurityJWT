@@ -1,4 +1,5 @@
 package com.Authentication.SpringSecurityJWT.Entity;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,33 +17,31 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import java.util.*;
 
 @Entity
 @Builder
-@Data 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="user")
+@Table(name = "user")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
-    
-    @Column(name="last_name")
+
+    @Column(name = "last_name")
     private String lastName;
-    
+
     private String email;
-    
+
     private String password;
-    
+
     @Enumerated(EnumType.STRING)
     private Role role;
-    
 
     public User(String firstName, String lastName, String email, String password, Role role) {
         this.firstName = firstName;
@@ -54,7 +53,11 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singletonList(new SimpleGrantedAuthority(role.name()));
+        // very important ROLE_
+        // return Collections.singletonList(new
+        // SimpleGrantedAuthority("ROLE_"+role.name()));
+
+        return role.getAuthorities();
     }
 
     @Override
