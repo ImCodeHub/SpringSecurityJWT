@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 // Don't forget to import this permission class.
-import static com.Authentication.SpringSecurityJWT.Entity.Permission.*;
+import static com.Authentication.SpringSecurityJWT.Entity.Permissions.*;
 import static com.Authentication.SpringSecurityJWT.Entity.Role.ADMIN;
 import static com.Authentication.SpringSecurityJWT.Entity.Role.MEMBER;
 

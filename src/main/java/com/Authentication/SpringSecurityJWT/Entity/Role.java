@@ -1,7 +1,7 @@
 package com.Authentication.SpringSecurityJWT.Entity;
 
 // Don't forget to import this permission class.
-import static com.Authentication.SpringSecurityJWT.Entity.Permission.*;
+import static com.Authentication.SpringSecurityJWT.Entity.Permissions.*;
 
 import java.util.List;
 import java.util.Set;
@@ -26,7 +26,7 @@ public enum Role {
                                         MEMBER_CREATE));
 
         @Getter
-        private final Set<Permission> permissions;
+        private final Set<Permissions> permissions;
 
         public List<SimpleGrantedAuthority> getAuthorities() {
                 var authorities = getPermissions()
