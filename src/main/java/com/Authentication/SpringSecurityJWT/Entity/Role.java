@@ -22,8 +22,8 @@ public enum Role {
                                         MEMBER_CREATE)),
         ADMIN(
                         Set.of(
-                                        MEMBER_READ,
-                                        MEMBER_CREATE));
+                                        ADMIN_READ,
+                                        ADMIN_CREATE));
 
         @Getter
         private final Set<Permissions> permissions;
