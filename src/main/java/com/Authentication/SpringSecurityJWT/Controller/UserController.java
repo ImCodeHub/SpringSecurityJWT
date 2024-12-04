@@ -32,12 +32,14 @@ public class UserController {
     @Autowired
     private TokenBlacklistService tokenBlacklistService;
 
+    // Register the user
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest registerRequest) {
         AuthenticationResponse authResponse = authService.register(registerRequest);
         return new ResponseEntity<>(authResponse, HttpStatus.OK);
     }
 
+    // user authentication while login
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
         logger.info("Received Authentication request for email: {}", request.getEmail());
