@@ -27,6 +27,7 @@ public class AuthService {
     @Autowired
     private final AuthenticationManager authenticationManager;
 
+    // method to save the user details in MySQL along with encripted password of user and return Bearer token
     public AuthenticationResponse register(RegisterRequest registerRequest) {
 
         var user = User.builder()
