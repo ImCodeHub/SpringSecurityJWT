@@ -16,7 +16,7 @@ import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JwtService {
-
+    // A secret key used to sign the JWT, ensuring its authenticity.
     private static final String SECRET = "q1X2z7vb9D4l8G1e3R6j0N5p2S9v6Y3f1C8i4U7o2J1m5Z9x3L0g4R8m7K2q3B6";
 
     public String generateToken(UserDetails user) {
