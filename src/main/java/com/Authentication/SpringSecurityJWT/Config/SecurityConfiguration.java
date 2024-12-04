@@ -1,7 +1,5 @@
 package com.Authentication.SpringSecurityJWT.Config;
 
-import java.lang.reflect.Member;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +23,7 @@ import static org.springframework.http.HttpMethod.POST;
 
 import lombok.RequiredArgsConstructor;
 
+// Specifies which endpoints are accessible to whom, based on roles or authorities.
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -42,6 +41,7 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req.requestMatchers("/api/v1/auth/*")
                         .permitAll()
+                        .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/management/**").hasAnyRole(ADMIN.name(), MEMBER.name())
                         .requestMatchers(GET, "/api/v1/management/**")
                         .hasAnyAuthority(ADMIN_CREATE.name(), MEMBER_READ.name())
