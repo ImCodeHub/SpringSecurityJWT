@@ -7,11 +7,11 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.Authentication.SpringSecurityJWT.Auth.TokenBlacklistService;
 import com.Authentication.SpringSecurityJWT.Service.JwtService;
 
 import jakarta.servlet.FilterChain;
@@ -29,6 +29,9 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Autowired
     private final UserDetailsService userDetailsService;
 
+    @Autowired
+    private final TokenBlacklistService tokenBlacklistService;
+
     // step 2.
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -43,6 +46,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         }
         // Extract the jwt from Authorization.
         jwt = authHeader.substring(7);
+
+         // Check if the token is blacklisted
+         if (tokenBlacklistService.isTokenBlacklisted(jwt)) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.getWriter().write("Token is blacklisted.");
+            return;
+        }
 
         // verify whether user is present in DB.
         // verify whether token is valid.
