@@ -17,13 +17,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.*;
-
+// user registration entity
 @Entity
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user")
+// implement userDetails interface to override the neccessoriy methods for user authentication
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
