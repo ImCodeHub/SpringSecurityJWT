@@ -14,13 +14,14 @@ public class AdminController {
     @GetMapping("/file")
     @PreAuthorize("hasAuthority('admin:read')")
     public String getAdmin() {
-        return "Secured Endpoint: : GET - Admin controller.";
+        return "Secured Endpoint: : GET Method- Admin controller.";
     }
     
     @PostMapping("/post")
     @PreAuthorize("hasAuthority('admin:create')")
     public String post(){
-        return "Secured Endpoint: : GET - Admin controller.";
+        return "Secured Endpoint: : POST Method - Admin controller.";
     }
 
 }
+    
